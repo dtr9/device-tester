@@ -1,0 +1,323 @@
+.keyboard-tester {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.keyboard-tester h1 {
+  font-size: 2rem;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+.subtitle .note {
+  display: block;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-top: 0.25rem;
+}
+
+.keyboard-container {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+  overflow-x: auto;
+}
+
+.keyboard-full {
+  display: flex;
+  gap: 20px;
+  min-width: fit-content;
+}
+
+.keyboard-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.keyboard-section.main-section {
+  /* Main keyboard area */
+}
+
+.keyboard-section.nav-section {
+  /* Navigation cluster - Print Screen, Insert/Delete/Home/End/PgUp/PgDn, Arrows */
+  align-self: flex-start;
+}
+
+.keyboard-section.numpad-section {
+  /* Numpad section - no column gap needed since using grid inside */
+}
+
+.numpad-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 50px);
+  grid-template-rows: repeat(5, 50px);
+  gap: 6px 4px;
+}
+
+.numpad-grid .key {
+  height: auto;
+  min-height: 50px;
+}
+
+.numpad-spacer {
+  height: 50px;
+}
+
+/* Media/Function Keys Section */
+.media-keys-container {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.media-keys-container h3 {
+  font-size: 1rem;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fn-note {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.media-keys {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.key.media-key {
+  background: linear-gradient(180deg, #e0f2fe 0%, #bae6fd 100%);
+  border-color: #38bdf8;
+  color: #0369a1;
+  font-size: 11px;
+}
+
+.key.media-key.pressed {
+  background: linear-gradient(180deg, #0ea5e9 0%, #0284c7 100%);
+  border-color: #0369a1;
+  color: #fff;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 4px;
+  min-height: 50px;
+}
+
+.key {
+  height: 50px;
+  background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: #475569;
+  user-select: none;
+  transition: all 0.1s ease;
+  box-shadow: 0 2px 0 #94a3b8;
+  flex-shrink: 0;
+}
+
+.key.spacer {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.key.pressed {
+  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+  border-color: #1d4ed8;
+  color: #fff;
+  box-shadow: 0 0 0 #1d4ed8;
+  transform: translateY(2px);
+}
+
+.key.modifier {
+  background: linear-gradient(180deg, #fef3c7 0%, #fde68a 100%);
+  border-color: #f59e0b;
+  color: #92400e;
+}
+
+.key.modifier.pressed {
+  background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+  border-color: #b45309;
+  color: #fff;
+}
+
+.panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .panels {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.panel h2 {
+  font-size: 1.125rem;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.event-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.event-row .label {
+  color: #64748b;
+  font-family: monospace;
+}
+
+.event-row .value {
+  font-weight: 600;
+  color: #1e293b;
+  font-family: monospace;
+  background: #f1f5f9;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+}
+
+.modifiers {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.modifier-badge {
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #f1f5f9;
+  color: #94a3b8;
+  transition: all 0.15s ease;
+}
+
+.modifier-badge.active {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+/* Fn combination highlight */
+.fn-combo-row {
+  background: linear-gradient(90deg, #fef3c7 0%, #fde68a 100%);
+  border-radius: 6px;
+  padding: 0.75rem !important;
+  margin-bottom: 0.5rem;
+}
+
+.fn-combo-value {
+  background: #f59e0b !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+}
+
+.no-event,
+.no-history {
+  color: #94a3b8;
+  text-align: center;
+  padding: 2rem;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.history-header h2 {
+  margin-bottom: 0;
+}
+
+.clear-btn {
+  background: #f1f5f9;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: #64748b;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-btn:hover {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.history-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.history-key {
+  background: #2563eb;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-weight: 600;
+  min-width: 40px;
+  text-align: center;
+}
+
+.history-code {
+  flex: 1;
+  color: #64748b;
+  font-family: monospace;
+  font-size: 0.875rem;
+}
+
+.history-time {
+  color: #94a3b8;
+  font-size: 0.75rem;
+}

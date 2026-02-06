@@ -1,0 +1,47 @@
+.navbar {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #64748b;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.navbar-links a:hover {
+  color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.navbar-links a.active {
+  color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.navbar-links .coming-soon {
+  color: #cbd5e1;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  cursor: not-allowed;
+}
