@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import KeyboardTester from './pages/KeyboardTester'
@@ -8,9 +8,12 @@ import CameraTester from './pages/CameraTester'
 import './App.css'
 
 function App() {
+  const location = useLocation()
+  const isHomePage = location.pathname === '/'
+
   return (
     <div className="app">
-      <Navbar />
+      {!isHomePage && <Navbar />}
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />
