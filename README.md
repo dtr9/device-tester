@@ -1,24 +1,26 @@
-# Device Tester
+# Device Test
 
 A comprehensive web application for testing computer input/output devices including keyboard, mouse, microphone, and camera.
 
+**Live Demo:** [https://any-device-test.vercel.app](https://any-device-test.vercel.app)
+
 ## Features
 
-### Keyboard Tester
+### Keyboard Test
 - Full 104-key keyboard layout support (ANSI)
 - Main keyboard, navigation cluster, and numpad sections
 - Fn key combination detection (media keys, brightness, etc.)
 - Real-time key press visualization
 - Event details display (key code, key name, modifiers)
 
-### Mouse Tester
+### Mouse Test
 - 5-button mouse support (left, right, middle, back, forward)
 - Scroll wheel tracking (up/down/left/right)
 - Click counter for each button
 - Position tracking and drag detection
 - Event history log
 
-### Microphone Tester
+### Microphone Test
 - Device selection from available microphones
 - Real-time volume meter with peak detection
 - Waveform visualization
@@ -26,7 +28,7 @@ A comprehensive web application for testing computer input/output devices includ
 - Audio recording with playback
 - Download recorded audio
 
-### Camera Tester
+### Camera Test
 - Device selection (camera and microphone)
 - Live video preview with filters:
   - B&W, Sepia, Invert, Blur, Vivid, Cool, Warm
