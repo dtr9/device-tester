@@ -342,16 +342,7 @@
   font-size: 0.75rem;
 }
 
-/* Keyboard Controls */
-.keyboard-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
+/* Keyboard Layout Toggle */
 .layout-toggle {
   display: flex;
   align-items: center;
@@ -360,6 +351,13 @@
   padding: 0.75rem 1.25rem;
   border-radius: 0.75rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+  width: fit-content;
+}
+
+.layout-divider {
+  color: #e2e8f0;
+  font-weight: 300;
 }
 
 .reset-btn {
@@ -368,7 +366,7 @@
   padding: 0.5rem 0.75rem;
   font-size: 0.8rem;
   font-weight: 500;
-  color: #64748b;
+  color: #94a3b8;
   cursor: pointer;
   transition: all 0.2s ease;
   border-radius: 0.375rem;
@@ -376,7 +374,6 @@
 
 .reset-btn:hover {
   color: #2563eb;
-  background: #eff6ff;
 }
 
 .layout-label {

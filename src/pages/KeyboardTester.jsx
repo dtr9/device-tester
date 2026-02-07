@@ -588,25 +588,24 @@ function KeyboardTester() {
       <h1>Keyboard Test</h1>
       <p className="subtitle">Press any key to test. All key presses are captured. <span className="note">Fn key combinations (volume, brightness, media) are detected and shown below.</span></p>
 
-      {/* Keyboard Controls */}
-      <div className="keyboard-controls">
-        <div className="layout-toggle">
-          <span className="layout-label">Keyboard Layout:</span>
-          <div className="layout-buttons">
-            <button
-              className={`layout-btn ${keyboardLayout === 'windows' ? 'active' : ''}`}
-              onClick={() => setKeyboardLayout('windows')}
-            >
-              Windows
-            </button>
-            <button
-              className={`layout-btn ${keyboardLayout === 'mac' ? 'active' : ''}`}
-              onClick={() => setKeyboardLayout('mac')}
-            >
-              Mac
-            </button>
-          </div>
+      {/* Keyboard Layout Toggle */}
+      <div className="layout-toggle">
+        <span className="layout-label">Keyboard Layout:</span>
+        <div className="layout-buttons">
+          <button
+            className={`layout-btn ${keyboardLayout === 'windows' ? 'active' : ''}`}
+            onClick={() => setKeyboardLayout('windows')}
+          >
+            Windows
+          </button>
+          <button
+            className={`layout-btn ${keyboardLayout === 'mac' ? 'active' : ''}`}
+            onClick={() => setKeyboardLayout('mac')}
+          >
+            Mac
+          </button>
         </div>
+        <span className="layout-divider">|</span>
         <button className="reset-btn" onClick={resetTestedKeys}>
           Reset
         </button>
