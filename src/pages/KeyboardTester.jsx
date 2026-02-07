@@ -608,7 +608,7 @@ function KeyboardTester() {
           </div>
         </div>
         <button className="reset-btn" onClick={resetTestedKeys}>
-          Reset All Keys
+          Reset
         </button>
       </div>
 
