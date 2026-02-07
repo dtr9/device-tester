@@ -685,7 +685,7 @@ function CameraTester() {
 
   return (
     <div className="camera-tester">
-      <h1>Camera Tester</h1>
+      <h1>Camera Test</h1>
       <p className="subtitle">Test your camera, capture photos, and record videos with audio.</p>
 
       {!isStreaming ? (

@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <NavLink to="/">Device Tester</NavLink>
+        <NavLink to="/">Device Test</NavLink>
       </div>
       <ul className="navbar-links">
         <li>

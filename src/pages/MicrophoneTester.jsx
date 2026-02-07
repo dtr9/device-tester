@@ -332,7 +332,7 @@ function MicrophoneTester() {
 
   return (
     <div className="microphone-tester">
-      <h1>Microphone Tester</h1>
+      <h1>Microphone Test</h1>
       <p className="subtitle">Test your microphone input, visualize audio, and record samples.</p>
 
       {/* Permission / Start Section */}

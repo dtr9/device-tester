@@ -371,7 +371,7 @@ function KeyboardTester() {
 
   return (
     <div className="keyboard-tester">
-      <h1>Keyboard Tester</h1>
+      <h1>Keyboard Test</h1>
       <p className="subtitle">Press any key to test. All key presses are captured. <span className="note">Fn key combinations (volume, brightness, media) are detected and shown below.</span></p>
 
       <div className="keyboard-container">

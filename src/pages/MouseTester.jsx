@@ -217,7 +217,7 @@ function MouseTester() {
 
   return (
     <div className="mouse-tester">
-      <h1>Mouse Tester</h1>
+      <h1>Mouse Test</h1>
       <p className="subtitle">Click, scroll, and move your mouse in the test area below.</p>
 
       <div className="mouse-content">

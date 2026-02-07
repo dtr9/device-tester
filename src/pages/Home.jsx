@@ -3,28 +3,28 @@ import { Link } from 'react-router-dom'
 function Home() {
   const testers = [
     {
-      name: 'Keyboard Tester',
+      name: 'Keyboard Test',
       description: 'Test your keyboard keys, view key codes, and check for stuck keys.',
       path: '/keyboard',
       available: true,
       icon: '⌨️',
     },
     {
-      name: 'Mouse Tester',
+      name: 'Mouse Test',
       description: 'Test mouse buttons, scroll wheel, and track cursor position.',
       path: '/mouse',
       available: true,
       icon: '🖱️',
     },
     {
-      name: 'Microphone Tester',
+      name: 'Microphone Test',
       description: 'Test your microphone input and monitor audio levels.',
       path: '/microphone',
       available: true,
       icon: '🎤',
     },
     {
-      name: 'Camera Tester',
+      name: 'Camera Test',
       description: 'Preview your webcam and test video input.',
       path: '/camera',
       available: true,
@@ -35,7 +35,7 @@ function Home() {
   return (
     <div className="home">
       <header className="home-header">
-        <h1>Device Tester</h1>
+        <h1>Device Test</h1>
         <p>Test and diagnose your hardware devices right in your browser.</p>
       </header>
 
@@ -47,7 +47,7 @@ function Home() {
             <p>{tester.description}</p>
             {tester.available ? (
               <Link to={tester.path} className="tester-link">
-                Open Tester
+                Start Test
               </Link>
             ) : (
               <span className="coming-soon-badge">Coming Soon</span>
