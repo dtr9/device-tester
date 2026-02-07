@@ -388,6 +388,9 @@ function KeyboardTester() {
   // Keyboard layout: 'windows' or 'mac' - auto-detect on mount
   const [keyboardLayout, setKeyboardLayout] = useState(() => isMacOS() ? 'mac' : 'windows')
 
+  // Track keys that have been tested (pressed at least once)
+  const [testedKeys, setTestedKeys] = useState(new Set())
+
   // Track if keydown was received for proper keyup handling
   const keyDownReceived = useRef(new Set())
 
@@ -415,6 +418,9 @@ function KeyboardTester() {
     keyDownReceived.current.add(keyCode)
 
     setPressedKeys((prev) => new Set([...prev, keyCode]))
+
+    // Mark key as tested
+    setTestedKeys((prev) => new Set([...prev, keyCode]))
 
     // Check if this is an Fn-triggered key (infer Fn is being held)
     const isFnTriggered = FN_TRIGGERED_CODES.has(keyCode)
@@ -465,6 +471,9 @@ function KeyboardTester() {
     if (!keyDownReceived.current.has(keyCode)) {
       // Key wasn't seen on keydown, show it briefly and log the event
       setPressedKeys((prev) => new Set([...prev, keyCode]))
+
+      // Mark key as tested
+      setTestedKeys((prev) => new Set([...prev, keyCode]))
 
       if (isFnTriggered) {
         setFnActive(true)
@@ -544,6 +553,23 @@ function KeyboardTester() {
     setCurrentEvent(null)
   }
 
+  // Reset all tested keys
+  const resetTestedKeys = () => {
+    setTestedKeys(new Set())
+  }
+
+  // Helper to check if a key has been tested (pressed at least once)
+  const isKeyTested = (key) => {
+    if (key.isFnKey) {
+      return testedKeys.has('Fn') || testedKeys.has(key.code)
+    }
+    if (testedKeys.has(key.code)) return true
+    if (key.altCodes) {
+      return key.altCodes.some(code => testedKeys.has(code))
+    }
+    return false
+  }
+
   // Helper to check if a key is pressed (supports altCodes for browser compatibility)
   const isKeyPressed = (key) => {
     // Special handling for Fn key - it's inferred from Fn-triggered key presses
@@ -562,23 +588,28 @@ function KeyboardTester() {
       <h1>Keyboard Test</h1>
       <p className="subtitle">Press any key to test. All key presses are captured. <span className="note">Fn key combinations (volume, brightness, media) are detected and shown below.</span></p>
 
-      {/* Keyboard Layout Toggle */}
-      <div className="layout-toggle">
-        <span className="layout-label">Keyboard Layout:</span>
-        <div className="layout-buttons">
-          <button
-            className={`layout-btn ${keyboardLayout === 'windows' ? 'active' : ''}`}
-            onClick={() => setKeyboardLayout('windows')}
-          >
-            Windows
-          </button>
-          <button
-            className={`layout-btn ${keyboardLayout === 'mac' ? 'active' : ''}`}
-            onClick={() => setKeyboardLayout('mac')}
-          >
-            Mac
-          </button>
+      {/* Keyboard Controls */}
+      <div className="keyboard-controls">
+        <div className="layout-toggle">
+          <span className="layout-label">Keyboard Layout:</span>
+          <div className="layout-buttons">
+            <button
+              className={`layout-btn ${keyboardLayout === 'windows' ? 'active' : ''}`}
+              onClick={() => setKeyboardLayout('windows')}
+            >
+              Windows
+            </button>
+            <button
+              className={`layout-btn ${keyboardLayout === 'mac' ? 'active' : ''}`}
+              onClick={() => setKeyboardLayout('mac')}
+            >
+              Mac
+            </button>
+          </div>
         </div>
+        <button className="reset-btn" onClick={resetTestedKeys}>
+          Reset All Keys
+        </button>
       </div>
 
       <div className="keyboard-container">
@@ -590,7 +621,7 @@ function KeyboardTester() {
                 {row.map((key) => (
                   <div
                     key={key.code}
-                    className={`key ${isKeyPressed(key) ? 'pressed' : ''} ${key.modifier ? 'modifier' : ''} ${key.spacer ? 'spacer' : ''}`}
+                    className={`key ${isKeyPressed(key) ? 'pressed' : ''} ${isKeyTested(key) ? 'tested' : ''} ${key.spacer ? 'spacer' : ''}`}
                     style={{
                       width: `${key.width * 50 + (key.width - 1) * 4}px`,
                       height: key.height ? `${key.height * 50 + (key.height - 1) * 6}px` : '50px'
@@ -610,7 +641,7 @@ function KeyboardTester() {
                 {row.map((key) => (
                   <div
                     key={key.code}
-                    className={`key ${isKeyPressed(key) ? 'pressed' : ''} ${key.modifier ? 'modifier' : ''} ${key.spacer ? 'spacer' : ''}`}
+                    className={`key ${isKeyPressed(key) ? 'pressed' : ''} ${isKeyTested(key) ? 'tested' : ''} ${key.spacer ? 'spacer' : ''}`}
                     style={{
                       width: `${key.width * 50 + (key.width - 1) * 4}px`,
                       height: key.height ? `${key.height * 50 + (key.height - 1) * 6}px` : '50px'
@@ -631,7 +662,7 @@ function KeyboardTester() {
               {NUMPAD_KEYS.map((key) => (
                 <div
                   key={key.code}
-                  className={`key ${isKeyPressed(key) ? 'pressed' : ''} ${key.modifier ? 'modifier' : ''}`}
+                  className={`key ${isKeyPressed(key) ? 'pressed' : ''} ${isKeyTested(key) ? 'tested' : ''}`}
                   style={{
                     gridColumn: key.gridCol,
                     gridRow: key.gridRow,
@@ -654,7 +685,7 @@ function KeyboardTester() {
               {row.map((key) => (
                 <div
                   key={key.code}
-                  className={`key media-key ${isKeyPressed(key) ? 'pressed' : ''}`}
+                  className={`key media-key ${isKeyPressed(key) ? 'pressed' : ''} ${isKeyTested(key) ? 'tested' : ''}`}
                   style={{
                     width: `${key.width * 50 + (key.width - 1) * 4}px`,
                   }}
